@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>INDEX PAGE</h1>
+
+    <img src="{% static 'articles/market.png' %}">
+    <ul>
+        <li><a href="{% url 'articles:articles' %}">목록 보기</a></li>
+        <li><a href="{% url 'articles:data-throw' %}">Throw 이동</a></li>
+        <li><a href="{% url 'users:users' %}">Users 이동</a></li>
+    </ul>
+{% endblock content %}

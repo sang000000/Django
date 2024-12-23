@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ member.username }}의 프로필 페이지</h1>
+
+    <div>
+        <h2>이름 : {{ member.username }}</h2>
+        <h3>가입일: {{ member.date_joined|date:"Y년 m월 d일" }}</h3>
+
+    
+
+        {% if liked_articles %}
+            <h3>찜한 글 목록:</h3>
+            <ul>
+                {% for article in liked_articles %}
+                    <li>
+                        <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>찜한 글이 없습니다.</p>
+        {% endif %}
+
+        {% if authored_articles %}
+            <h3>작성한 글 목록:</h3>
+            <ul>
+                {% for article in authored_articles %}
+                    <li>
+                        <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>작성한 글이 없습니다.</p>
+        {% endif %}
+
+        {% if request.user != member %}
+            <form action="{% url 'users:follow' member.pk %}" method="POST">
+                {% csrf_token %}
+                {% if request.user in member.followers.all %}
+                    <input type="submit" value="언팔로우">
+                {% else %}
+                    <input type="submit" value="팔로우">
+                {% endif %}
+
+
+            </form>
+        {% endif %}
+    </div>
+
+    <a href="/index/">홈으로 돌아가기</a>
+
+{% endblock content %}
