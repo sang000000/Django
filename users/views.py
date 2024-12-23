@@ -15,10 +15,6 @@ def profile(request, username):
     member = get_object_or_404(get_user_model(), username=username)
     liked_articles = member.like_articles.all()
     authored_articles = Article.objects.filter(author=member)
-
-    '''profile = get_object_or_404(Profile, user=member)
-    followers_count = profile.followers.count()  # 팔로워 수
-    following_count = profile.followings.count()'''
     context = {
         "member" : member,
         "liked_articles": liked_articles,
