@@ -14,6 +14,7 @@
         <img src="{{ MEDIA_URL }}{{ article.image.url }}" >
     {% endif %}
     <p>내용: {{ article.content }}</p>
+    <p>가격: {{ article.price }}원</p>
     <p>작성일시: {{ article.created_at }}</p>
     <p>수정일시: {{ article.updated_at }}</p>
 

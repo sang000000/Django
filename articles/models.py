@@ -5,8 +5,10 @@ from django.conf import settings
 class Article(models.Model):
     title = models.CharField(max_length= 50)
     content = models.TextField()
+    price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
     image = models.ImageField(upload_to="images/", blank=True)
 
     author = models.ForeignKey(
