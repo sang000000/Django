@@ -18,7 +18,5 @@ urlpatterns = [
 
 
     path('index/',views.index, name= "index"),
-    path("data-throw/",views.data_throw, name="data-throw"),
-    path("data-catch/",views.data_catch, name="data-catch"),
 ]
 

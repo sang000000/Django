@@ -15,6 +15,7 @@ def profile(request, username):
     member = get_object_or_404(get_user_model(), username=username)
     liked_articles = member.like_articles.all()
     authored_articles = Article.objects.filter(author=member)
+    
     context = {
         "member" : member,
         "liked_articles": liked_articles,

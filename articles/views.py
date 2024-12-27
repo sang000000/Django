@@ -110,13 +110,5 @@ def like(request, pk):
 
     return redirect("accounts:login")
 
-def data_throw(request):
-    return render(request, "articles/data_throw.html")
-
-def data_catch(request):
-    message = request.GET.get("message")
-    context = {"message" : message}
-    return render(request, "articles/data_catch.html", context)
-
 
 
